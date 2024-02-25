@@ -9,6 +9,8 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "./Firebase/firebase";
 import Login from "./Components/Auth/Login";
 import NamazPage from "./Components/Home/NamazPage";
+import UserProfile from "./Components/Auth/Users/UserProfile";
+
 import Logo from "../src/assets/logo.png";
 
 function App() {
@@ -58,6 +60,7 @@ function App() {
           <Route path="/namaz" element={<NamazPage />} />
           <Route path="/login" element={<Login />} />
         </Route>
+        <Route path="/profile" element={<UserProfile />} />
       </Routes>
     </Router>
   );
