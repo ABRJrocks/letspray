@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { FaSun, FaMoon, FaRegSun, FaCheck } from "react-icons/fa";
 import Toast from "./Toast"; // Import the Toast component
 
@@ -21,7 +22,7 @@ const NamazPage = () => {
         const method = 1; // Using method 1: University of Islamic Sciences, Karachi
 
         const response = await fetch(
-          `http://api.aladhan.com/v1/timingsByCity/${date}?city=${city}&country=${country}&method=${method}`
+          `https://api.aladhan.com/v1/timingsByCity/${date}?city=${city}&country=${country}&method=${method}`
         );
         if (!response.ok) {
           throw new Error("Failed to fetch Namaz timings");
@@ -125,7 +126,7 @@ const NamazPage = () => {
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {namazTimes.map((namaz, index) => (
-          <div
+          <motion.div
             key={index}
             className={`relative bg-white rounded-lg shadow-md p-4 ${
               namaz.completed
@@ -133,6 +134,9 @@ const NamazPage = () => {
                 : "hover:bg-gray-50 cursor-pointer"
             }`}
             onClick={() => handleNamazComplete(index)}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ duration: 0.2 }}
           >
             {namaz.completed && (
               <FaCheck className="absolute top-2 right-2 text-green-500" />
@@ -147,7 +151,7 @@ const NamazPage = () => {
             <span className="block text-center mt-2">
               {namaz.completed ? "MashaAllah Well Done 💖" : "Prayed?"}
             </span>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>
