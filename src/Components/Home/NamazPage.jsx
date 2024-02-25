@@ -118,15 +118,17 @@ const NamazPage = () => {
         />
       )}{" "}
       {/* Render Toast */}
-      <h2 className="text-3xl font-bold mb-6 text-blue-800">
+      <h2 className="text-3xl font-bold mb-6 text-blue-800 text-center">
         Namaz Times for Today
       </h2>
-      <p className="mb-4 text-gray-600">Current Time: {currentTime}</p>
+      <p className="mb-4 text-gray-600 text-center">
+        Current Time: {currentTime}
+      </p>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {namazTimes.map((namaz, index) => (
           <motion.div
             key={index}
-            className={`relative bg-white rounded-lg shadow-md p-6 ${
+            className={`relative bg-white rounded-lg shadow-md p-4 ${
               namaz.completed
                 ? "bg-green-50"
                 : "hover:bg-gray-50 cursor-pointer"
@@ -139,14 +141,14 @@ const NamazPage = () => {
             {namaz.completed && (
               <FaCheck className="absolute top-2 right-2 text-green-500" />
             )}
-            <div className="flex items-center mb-3">
+            <div className="flex items-center justify-center">
               <span className="mr-2 text-yellow-500">{namaz.icon}</span>
               <h3 className="text-xl font-semibold text-blue-800">
                 {namaz.name}
               </h3>
             </div>
-            <p className="text-gray-600">{namaz.time}</p>
-            <span className="ml-2 text-gray-700">
+            <p className="text-gray-600 text-center mt-2">{namaz.time}</p>
+            <span className="block text-center mt-2">
               {namaz.completed ? "MashaAllah Well Done 💖" : "Prayed?"}
             </span>
           </motion.div>
