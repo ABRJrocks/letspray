@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
 import { FaSun, FaMoon, FaRegSun, FaCheck } from "react-icons/fa";
 import Toast from "./Toast"; // Import the Toast component
 
@@ -124,19 +123,16 @@ const NamazPage = () => {
       <p className="mb-4 text-gray-600 text-center">
         Current Time: {currentTime}
       </p>
-      <div className="flex flex-wrap justify-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {namazTimes.map((namaz, index) => (
-          <motion.div
+          <div
             key={index}
-            className={`relative bg-white rounded-lg shadow-md p-4 mx-2 my-2 ${
+            className={`relative bg-white rounded-lg shadow-md p-4 ${
               namaz.completed
                 ? "bg-green-50"
                 : "hover:bg-gray-50 cursor-pointer"
             }`}
             onClick={() => handleNamazComplete(index)}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ duration: 0.2 }}
           >
             {namaz.completed && (
               <FaCheck className="absolute top-2 right-2 text-green-500" />
@@ -151,7 +147,7 @@ const NamazPage = () => {
             <span className="block text-center mt-2">
               {namaz.completed ? "MashaAllah Well Done 💖" : "Prayed?"}
             </span>
-          </motion.div>
+          </div>
         ))}
       </div>
     </div>
