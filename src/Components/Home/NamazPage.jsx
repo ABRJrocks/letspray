@@ -133,7 +133,7 @@ const NamazPage = () => {
               key={index}
               className={`relative bg-white rounded-lg shadow-md p-4 ${
                 namaz.completed
-                  ? "bg-green-50"
+                  ? "bg-green-100"
                   : "hover:bg-gray-50 cursor-pointer"
               }`}
               onClick={() => handleNamazComplete(index)}
