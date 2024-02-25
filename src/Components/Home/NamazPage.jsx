@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FaSun, FaMoon, FaRegSun, FaCheck } from "react-icons/fa";
+import Header from "./Header";
 import Toast from "./Toast"; // Import the Toast component
 
 const NamazPage = () => {
@@ -110,49 +111,52 @@ const NamazPage = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
-      {showToast && (
-        <Toast
-          message={showToast.message}
-          onClose={() => setShowToast(false)}
-        />
-      )}{" "}
-      {/* Render Toast */}
-      <h2 className="text-3xl font-bold mb-6 text-blue-800 text-center">
-        Namaz Times for Today
-      </h2>
-      <p className="mb-4 text-gray-600 text-center">
-        Current Time: {currentTime}
-      </p>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {namazTimes.map((namaz, index) => (
-          <motion.div
-            key={index}
-            className={`relative bg-white rounded-lg shadow-md p-4 ${
-              namaz.completed
-                ? "bg-green-50"
-                : "hover:bg-gray-50 cursor-pointer"
-            }`}
-            onClick={() => handleNamazComplete(index)}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ duration: 0.2 }}
-          >
-            {namaz.completed && (
-              <FaCheck className="absolute top-2 right-2 text-green-500" />
-            )}
-            <div className="flex items-center justify-center">
-              <span className="mr-2 text-yellow-500">{namaz.icon}</span>
-              <h3 className="text-xl font-semibold text-blue-800">
-                {namaz.name}
-              </h3>
-            </div>
-            <p className="text-gray-600 text-center mt-2">{namaz.time}</p>
-            <span className="block text-center mt-2">
-              {namaz.completed ? "MashaAllah Well Done 💖" : "Prayed?"}
-            </span>
-          </motion.div>
-        ))}
+    <div>
+      <Header />
+      <div className="container mx-auto p-4">
+        {showToast && (
+          <Toast
+            message={showToast.message}
+            onClose={() => setShowToast(false)}
+          />
+        )}{" "}
+        {/* Render Toast */}
+        <h2 className="text-3xl font-bold mb-6 text-blue-800 text-center">
+          Namaz Times for Today
+        </h2>
+        <p className="mb-4 text-gray-600 text-center">
+          Current Time: {currentTime}
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {namazTimes.map((namaz, index) => (
+            <motion.div
+              key={index}
+              className={`relative bg-white rounded-lg shadow-md p-4 ${
+                namaz.completed
+                  ? "bg-green-50"
+                  : "hover:bg-gray-50 cursor-pointer"
+              }`}
+              onClick={() => handleNamazComplete(index)}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ duration: 0.2 }}
+            >
+              {namaz.completed && (
+                <FaCheck className="absolute top-2 right-2 text-green-500" />
+              )}
+              <div className="flex items-center justify-center">
+                <span className="mr-2 text-yellow-500">{namaz.icon}</span>
+                <h3 className="text-xl font-semibold text-blue-800">
+                  {namaz.name}
+                </h3>
+              </div>
+              <p className="text-gray-600 text-center mt-2">{namaz.time}</p>
+              <span className="block text-center mt-2">
+                {namaz.completed ? "MashaAllah Well Done 💖" : "Prayed?"}
+              </span>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </div>
   );
