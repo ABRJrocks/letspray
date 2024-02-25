@@ -131,7 +131,7 @@ const NamazPage = () => {
           {namazTimes.map((namaz, index) => (
             <motion.div
               key={index}
-              className={`relative bg-white rounded-lg shadow-xl hover:shadow-inner p-4 ${
+              className={`relative bg-white rounded-lg shadow-md hover:shadow-inner p-4 ${
                 namaz.completed
                   ? "bg-[#d7fca5]"
                   : "hover:bg-blue-100 cursor-pointer"
