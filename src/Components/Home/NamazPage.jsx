@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FaSun, FaMoon, FaRegSun, FaCheck } from "react-icons/fa";
+import Toast from "./Toast"; // Import the Toast component
 
 const NamazPage = () => {
   const [currentTime, setCurrentTime] = useState("");
   const [namazTimes, setNamazTimes] = useState([]);
+  const [showToast, setShowToast] = useState(false); // State to control Toast visibility
 
   useEffect(() => {
     const fetchNamazTimings = async () => {
@@ -91,21 +93,42 @@ const NamazPage = () => {
     const updatedNamazTimes = [...namazTimes];
     updatedNamazTimes[index].completed = !updatedNamazTimes[index].completed;
     setNamazTimes(updatedNamazTimes);
+
+    const completedNamaz = namazTimes[index].name;
+    setShowToast({
+      message: `${completedNamaz} ${
+        updatedNamazTimes[index].completed
+          ? "MashaAllah Well Done 💖"
+          : "Prayed?"
+      }`,
+      show: true,
+    });
+
+    setTimeout(() => {
+      setShowToast({ ...showToast, show: false });
+    }, 3000);
   };
 
   return (
     <div className="container mx-auto p-4">
+      {showToast && (
+        <Toast
+          message={showToast.message}
+          onClose={() => setShowToast(false)}
+        />
+      )}{" "}
+      {/* Render Toast */}
       <h2 className="text-3xl font-bold mb-6 text-blue-800 text-center">
         Namaz Times for Today
       </h2>
       <p className="mb-4 text-gray-600 text-center">
         Current Time: {currentTime}
       </p>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="flex flex-wrap justify-center">
         {namazTimes.map((namaz, index) => (
           <motion.div
             key={index}
-            className={`relative bg-white rounded-lg shadow-md p-4 ${
+            className={`relative bg-white rounded-lg shadow-md p-4 mx-2 my-2 ${
               namaz.completed
                 ? "bg-green-50"
                 : "hover:bg-gray-50 cursor-pointer"
