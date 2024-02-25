@@ -151,7 +151,7 @@ const NamazPage = () => {
                 </h3>
               </div>
               <p className="text-gray-600 text-center mt-2">{namaz.time}</p>
-              <span className="block text-center mt-2">
+              <span className="block text-center mt-2  ">
                 {namaz.completed ? "MashaAllah Well Done 💖" : "Prayed?"}
               </span>
             </motion.div>

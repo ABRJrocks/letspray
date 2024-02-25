@@ -31,8 +31,7 @@ function App() {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         setUser(user);
-
-        // Check if the user's email is verified
+        console.log(user);
       } else {
         setUser(null);
       }
@@ -51,12 +50,14 @@ function App() {
     <Router>
       <Routes>
         {/* If user is logged in, navigate to NamazPage, otherwise navigate to Login */}
+        <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
         <Route
           path="/"
-          element={user ? <Navigate to="/namaz" /> : <Navigate to="/login" />}
-        />
-        <Route path="/login" element={<Login />} />
-        <Route path="/namaz" element={<NamazPage />} />
+          element={user ? <NamazPage /> : <Navigate to="/login" />}
+        >
+          <Route path="/namaz" element={<NamazPage />} />
+          <Route path="/login" element={<Login />} />
+        </Route>
       </Routes>
     </Router>
   );
