@@ -5,8 +5,10 @@ import { doc, getDoc, setDoc } from "firebase/firestore";
 import { auth, db } from "../../Firebase/firebase";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
   const handleSignInGoogle = async () => {
     try {
       const provider = new GoogleAuthProvider();
@@ -25,7 +27,7 @@ const Login = () => {
           profilePicture: user.photoURL,
         });
       }
-
+      navigate("/namaz");
       // Sign-in successful, you can redirect or perform other actions here
     } catch (error) {
       console.error("Error signing in with Google:", error.message);
