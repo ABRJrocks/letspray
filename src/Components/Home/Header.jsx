@@ -56,7 +56,7 @@ export default function Header() {
     <div className="bg-white h-20 px-4 flex justify-between items-center border-b-2 shadow-md">
       <div
         className="flex items-center space-x-2"
-        onClick={() => navigate("/")}
+        onClick={() => navigate("/namaz")}
         style={{ cursor: "pointer" }}
       >
         <img src={Logo} alt="logo" className="h-12" />

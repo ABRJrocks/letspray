@@ -57,11 +57,10 @@ function App() {
         <Route
           path="/"
           element={user ? <NamazPage /> : <Navigate to="/login" />}
-        >
-          <Route path="/namaz" element={<NamazPage />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/profile" element={<UserProfile />} />
-        </Route>
+        ></Route>
+        <Route path="/login" element={<Login />} />
+        <Route path="/namaz" element={<NamazPage />} />
+        <Route path="/profile" element={<UserProfile />} />
         <Route path="/chat" element={<Chat />} />
       </Routes>
     </Router>
