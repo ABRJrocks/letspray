@@ -7,6 +7,8 @@ import {
   addDoc,
   Timestamp,
   orderBy,
+  doc,
+  getDoc,
 } from "firebase/firestore";
 import Header from "../Home/Header";
 
@@ -41,13 +43,23 @@ const Chat = () => {
     }
   }, [messages]);
 
+  const getUserData = async (uid) => {
+    const userDoc = doc(db, "users", uid);
+    const userSnap = await getDoc(userDoc);
+    if (userSnap.exists()) {
+      return userSnap.data().name;
+    } else {
+      return "Anonymous";
+    }
+  };
+
   const handleSend = async () => {
     const inputValue = inputs.trim();
     if (!inputValue) return;
 
     try {
       const { uid, email } = auth.currentUser;
-      const name = currentUser.displayName; // You can replace this with the actual username
+      const name = await getUserData(currentUser.uid);
 
       await addDoc(collection(db, "messages"), {
         text: inputValue,
