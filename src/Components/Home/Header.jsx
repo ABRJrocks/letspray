@@ -64,7 +64,10 @@ export default function Header() {
       </div>
       <div className="flex items-center space-x-4 relative">
         {/* Chat Button */}
-        <button className="text-gray-600 hover:text-gray-900">
+        <button
+          className="text-gray-600 hover:text-gray-900"
+          onClick={() => navigate("/chat")}
+        >
           <HiOutlineChatAlt className="h-8 w-8" />
         </button>
 

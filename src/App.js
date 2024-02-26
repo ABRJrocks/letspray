@@ -10,6 +10,7 @@ import { auth } from "./Firebase/firebase";
 import Login from "./Components/Auth/Login";
 import NamazPage from "./Components/Home/NamazPage";
 import UserProfile from "./Components/Auth/Users/UserProfile";
+import Chat from "./Components/Chat/Chat";
 
 import Logo from "../src/assets/logo.png";
 
@@ -59,8 +60,9 @@ function App() {
         >
           <Route path="/namaz" element={<NamazPage />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/profile" element={<UserProfile />} />
         </Route>
-        <Route path="/profile" element={<UserProfile />} />
+        <Route path="/chat" element={<Chat />} />
       </Routes>
     </Router>
   );
