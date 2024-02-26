@@ -133,7 +133,7 @@ const NamazPage = () => {
           opacity: 0.7, // Adjust opacity for overlay
         }}
       />
-      <div className="container mx-auto  p-8 bg-white backdrop-blur-md  bg-opacity-30 rounded-3xl  mt-16 sm:-mt-24 sm:mb-6">
+      <div className="container mx-auto  p-8 bg-white backdrop-blur-md  bg-opacity-30 rounded-3xl  mt-16 sm:mt-24 ">
         {showToast && (
           <Toast
             message={showToast.message}
