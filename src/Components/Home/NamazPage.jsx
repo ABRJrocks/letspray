@@ -133,7 +133,7 @@ const NamazPage = () => {
           opacity: 0.7, // Adjust opacity for overlay
         }}
       />
-      <div className="container mx-auto p-8 bg-white backdrop-blur-md  bg-opacity-30 rounded-3xl mt-10 ">
+      <div className="container mx-auto  p-8 bg-white backdrop-blur-md  bg-opacity-30 rounded-3xl  mt-16 sm:-mt-24 sm:mb-6">
         {showToast && (
           <Toast
             message={showToast.message}
@@ -152,9 +152,7 @@ const NamazPage = () => {
             <motion.div
               key={index}
               className={`relative bg-white rounded-lg shadow-md p-4 cursor-pointer ${
-                namaz.completed
-                  ? "completed-card"
-                  : "hover:bg-blue-100 hover:shadow-inner"
+                namaz.completed ? "bg-green-100" : "hover:bg-blue-100 "
               }`}
               onClick={() => handleNamazComplete(index)}
               whileHover={{ scale: 1.05 }}
@@ -165,7 +163,9 @@ const NamazPage = () => {
                 <FaCheck className="absolute top-2 right-2 text-green-500" />
               )}
               <div className="flex items-center justify-center">
-                <span className="mr-2 text-yellow-500">{namaz.icon}</span>
+                <span className="mr-2 text-2xl text-yellow-500">
+                  {namaz.icon}
+                </span>
                 <h3 className="text-xl font-semibold text-blue-800">
                   {namaz.name}
                 </h3>

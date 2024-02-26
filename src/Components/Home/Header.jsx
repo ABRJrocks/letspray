@@ -83,7 +83,7 @@ export default function Header() {
             </button>
             {/* Dropdown menu for logout */}
             {showDropdown && (
-              <div className="absolute top-12 right-0 w-48 bg-white border rounded-lg shadow-md">
+              <div className="absolute top-12 right-0 w-48 z-50 bg-white border rounded-lg shadow-md">
                 <button
                   onClick={() => navigate("/profile")} // Use a callback function to avoid immediate execution
                   className="block px-4 py-2 text-gray-800 hover:bg-gray-100 w-full text-left"
