@@ -39,7 +39,7 @@ const Login = () => {
     <div className="min-h-screen bg-gray-100 flex flex-col justify-center items-center">
       <div className="max-w-sm w-full bg-white p-8 rounded-lg shadow-lg">
         <h2 className="text-3xl font-bold text-center mb-6">
-          One Step Closer to Your Prayers
+          One Step Closer to Deen
         </h2>
         <button
           onClick={handleSignInGoogle}

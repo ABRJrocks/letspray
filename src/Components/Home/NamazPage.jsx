@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { FaSun, FaMoon, FaRegSun, FaCheck } from "react-icons/fa";
 import Header from "./Header";
 import Toast from "./Toast"; // Import the Toast component
+import backgroundImage from "../../assets/background.jpg"; // Import your background image
 
 const NamazPage = () => {
   const [currentTime, setCurrentTime] = useState("");
@@ -111,9 +112,28 @@ const NamazPage = () => {
   };
 
   return (
-    <div>
+    <div
+      style={{
+        position: "relative",
+        minHeight: "100vh",
+      }}
+    >
       <Header />
-      <div className="container mx-auto p-4">
+      <div
+        style={{
+          backgroundImage: `url(${backgroundImage})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          zIndex: -1,
+          opacity: 0.7, // Adjust opacity for overlay
+        }}
+      />
+      <div className="container mx-auto p-8 bg-white backdrop-blur-md  bg-opacity-30 rounded-3xl mt-10 ">
         {showToast && (
           <Toast
             message={showToast.message}
@@ -131,10 +151,10 @@ const NamazPage = () => {
           {namazTimes.map((namaz, index) => (
             <motion.div
               key={index}
-              className={`relative bg-white rounded-lg shadow-md hover:shadow-inner p-4 ${
+              className={`relative bg-white rounded-lg shadow-md p-4 cursor-pointer ${
                 namaz.completed
-                  ? "bg-[#d7fca5]"
-                  : "hover:bg-blue-100 cursor-pointer"
+                  ? "completed-card"
+                  : "hover:bg-blue-100 hover:shadow-inner"
               }`}
               onClick={() => handleNamazComplete(index)}
               whileHover={{ scale: 1.05 }}
@@ -151,7 +171,7 @@ const NamazPage = () => {
                 </h3>
               </div>
               <p className="text-gray-600 text-center mt-2">{namaz.time}</p>
-              <span className="block text-center mt-2  ">
+              <span className="block text-center mt-2">
                 {namaz.completed ? "MashaAllah Well Done 💖" : "Prayed?"}
               </span>
             </motion.div>
