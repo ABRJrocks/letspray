@@ -97,7 +97,7 @@ const UserProfile = () => {
                 Update your profile information below.
               </p>
             </div>
-            <div className="border-t ">
+            <div className=" ">
               <dl>
                 <div className=" px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                   <dt className="text-sm font-medium text-gray-500">
@@ -113,7 +113,7 @@ const UserProfile = () => {
                       type="file"
                       accept="image/*"
                       onChange={handleProfileImageChange}
-                      className="py-2 px-4 border rounded-md  shadow-sm focus:outline-none focus:border-primary"
+                      className="py-2 px-4 s rounded-md  shadow-sm focus:outline-none focus:border-primary"
                     />
                   </dd>
                 </div>
@@ -124,7 +124,7 @@ const UserProfile = () => {
                   <dd className="mt-1 text-sm text-gray-900 sm:col-span-2">
                     <input
                       type="text"
-                      className="w-full border rounded-md px-3 py-2 focus:outline-none focus:border-primary"
+                      className="w-full  rounded-md px-3 py-2 focus:outline-none focus:border-primary"
                       value={name}
                       onChange={(e) => setUsername(e.target.value)}
                     />
@@ -150,7 +150,7 @@ const UserProfile = () => {
               <button
                 type="button"
                 onClick={handleUpdateProfile}
-                className="inline-flex items-center justify-center w-full rounded-md border border-transparent px-4 py-2 bg-primary text-base leading-6 font-medium text-white shadow-sm hover:bg-[#b5b5ff] focus:outline-none bg-[#9999ff] transition ease-in-out duration-150 sm:text-sm sm:leading-5"
+                className="inline-flex items-center justify-center w-full rounded-md border border-transparent px-4 py-2 bg-primary text-base leading-6 font-medium text-white shadow-sm hover:bg-[#9999ff] focus:outline-none bg-[#9999ff] transition ease-in-out duration-150 sm:text-sm sm:leading-5"
               >
                 Update Profile
               </button>
