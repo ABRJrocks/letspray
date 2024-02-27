@@ -8,7 +8,7 @@ import {
   uploadBytesResumable,
   getDownloadURL, // Import ref, uploadBytesResumable, and getDownloadURL from storage
 } from "firebase/storage";
-import Header from "../../Home/Header";
+import Toast from "../../Home/Toast"; // Import the Toast component
 
 const UserProfile = () => {
   const [user] = useAuthState(auth);
@@ -16,6 +16,7 @@ const UserProfile = () => {
   const [email, setEmail] = useState("");
   const [profilePicture, setProfileImage] = useState("");
   const [loading, setLoading] = useState(true); // Track loading state
+  const [showToast, setShowToast] = useState(null); // Initialize with null
 
   // Fetch user data from Firestore
   const userRef = doc(db, "users", user.uid);
@@ -33,17 +34,24 @@ const UserProfile = () => {
 
   const handleUpdateProfile = async () => {
     try {
-      // Update user profile data in Firestore
       const userRef = doc(db, "users", user.uid);
       await updateDoc(userRef, {
-        name,
         name,
         profilePicture,
       });
 
-      console.log("Profile updated successfully!");
+      // Show success toast
+      setShowToast({
+        type: "success",
+        message: "Profile updated successfully!",
+      });
     } catch (error) {
       console.error("Error updating profile:", error);
+      // Show error toast
+      setShowToast({
+        type: "error",
+        message: "Error updating profile. Please try again later.",
+      });
     }
   };
 
@@ -84,9 +92,16 @@ const UserProfile = () => {
   return (
     <div>
       <div className=" min-h-screen py-8 px-4 sm:px-6 lg:px-8">
+        {showToast && (
+          <Toast
+            type={showToast.type}
+            message={showToast.message}
+            onClose={() => setShowToast(null)}
+          />
+        )}
         <div
           className="max-w-4xl mx-auto backdrop-blur-md
-        bg-white bg-opacity-50 rounded-3xl mt-20 "
+        bg-white bg-opacity-50 rounded-3xl  "
         >
           <div className=" shadow overflow-hidden sm:rounded-lg ">
             <div className="px-4 py-5 sm:px-6">
@@ -150,7 +165,7 @@ const UserProfile = () => {
               <button
                 type="button"
                 onClick={handleUpdateProfile}
-                className="inline-flex items-center justify-center w-full rounded-md border border-transparent px-4 py-2 bg-primary text-base leading-6 font-medium text-white shadow-sm hover:bg-[#9999ff] focus:outline-none bg-[#9999ff] transition ease-in-out duration-150 sm:text-sm sm:leading-5"
+                className="inline-flex items-center justify-center w-full rounded-md border border-transparent px-4 py-2 bg-primary text-base leading-6 font-medium text-white shadow-sm hover:bg-[#b0b0ff] focus:outline-none bg-[#9999ff] transition ease-in-out duration-150 sm:text-sm sm:leading-5"
               >
                 Update Profile
               </button>
