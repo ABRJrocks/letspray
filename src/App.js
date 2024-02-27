@@ -11,6 +11,7 @@ import Login from "./Components/Auth/Login";
 import NamazPage from "./Components/Home/NamazPage";
 import UserProfile from "./Components/Auth/Users/UserProfile";
 import Chat from "./Components/Chat/Chat";
+import Layout from "./Components/Home/layout";
 
 import Logo from "../src/assets/logo.png";
 
@@ -54,14 +55,11 @@ function App() {
       <Routes>
         {/* If user is logged in, navigate to NamazPage, otherwise navigate to Login */}
         <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
-        <Route
-          path="/"
-          element={user ? <NamazPage /> : <Navigate to="/login" />}
-        ></Route>
-        <Route path="/login" element={<Login />} />
-        <Route path="/namaz" element={<NamazPage />} />
-        <Route path="/profile" element={<UserProfile />} />
-        <Route path="/chat" element={<Chat />} />
+        <Route path="/" element={user ? <Layout /> : <Navigate to="/login" />}>
+          <Route path="/" element={<NamazPage />} />
+          <Route path="/profile" element={<UserProfile />} />
+          <Route path="/chat" element={<Chat />} />
+        </Route>
       </Routes>
     </Router>
   );

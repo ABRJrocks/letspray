@@ -83,10 +83,12 @@ const UserProfile = () => {
 
   return (
     <div>
-      <Header />
-      <div className="bg-gray-100 min-h-screen py-8 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-white shadow overflow-hidden sm:rounded-lg">
+      <div className=" min-h-screen py-8 px-4 sm:px-6 lg:px-8">
+        <div
+          className="max-w-4xl mx-auto backdrop-blur-md
+        bg-white bg-opacity-50 rounded-3xl mt-20 "
+        >
+          <div className=" shadow overflow-hidden sm:rounded-lg ">
             <div className="px-4 py-5 sm:px-6">
               <h3 className="text-lg leading-6 font-medium text-gray-900">
                 Profile Information
@@ -95,9 +97,9 @@ const UserProfile = () => {
                 Update your profile information below.
               </p>
             </div>
-            <div className="border-t border-gray-200">
+            <div className="border-t ">
               <dl>
-                <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <div className=" px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                   <dt className="text-sm font-medium text-gray-500">
                     Profile Picture
                   </dt>
@@ -111,11 +113,11 @@ const UserProfile = () => {
                       type="file"
                       accept="image/*"
                       onChange={handleProfileImageChange}
-                      className="py-2 px-4 border border-gray-300 rounded-md bg-white shadow-sm focus:outline-none focus:border-primary"
+                      className="py-2 px-4 border rounded-md  shadow-sm focus:outline-none focus:border-primary"
                     />
                   </dd>
                 </div>
-                <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <div className=" px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                   <dt className="text-sm font-medium text-gray-500">
                     Full Name
                   </dt>
@@ -128,7 +130,7 @@ const UserProfile = () => {
                     />
                   </dd>
                 </div>
-                <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <div className=" px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                   <dt className="text-sm font-medium text-gray-500">
                     Email Address
                   </dt>
@@ -148,7 +150,7 @@ const UserProfile = () => {
               <button
                 type="button"
                 onClick={handleUpdateProfile}
-                className="inline-flex items-center justify-center w-full rounded-md border border-transparent px-4 py-2 bg-primary text-base leading-6 font-medium text-white shadow-sm hover:bg-[#ff8080] focus:outline-none bg-[#9999ff] transition ease-in-out duration-150 sm:text-sm sm:leading-5"
+                className="inline-flex items-center justify-center w-full rounded-md border border-transparent px-4 py-2 bg-primary text-base leading-6 font-medium text-white shadow-sm hover:bg-[#b5b5ff] focus:outline-none bg-[#9999ff] transition ease-in-out duration-150 sm:text-sm sm:leading-5"
               >
                 Update Profile
               </button>
