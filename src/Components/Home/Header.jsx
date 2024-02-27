@@ -53,7 +53,10 @@ export default function Header() {
   };
 
   return (
-    <div className="bg-white h-20 px-4 flex justify-between items-center border-b-2 shadow-md">
+    <div
+      className="bg-white h-20 px-4 flex justify-between items-center border-b-2 shadow-md sticky top-0 z-50"
+      style={{ position: "fixed", width: "100%", zIndex: "1000" }}
+    >
       <div
         className="flex items-center space-x-2"
         onClick={() => navigate("/")}

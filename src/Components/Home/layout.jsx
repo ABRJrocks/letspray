@@ -3,11 +3,11 @@ import { Outlet } from "react-router-dom";
 import Header from "./Header";
 import backgroundImage from "../../assets/background.jpg";
 
-export default function Layout() {
+const Layout = () => {
   return (
-    <div className="flex flex-col h-screen overflow-hidden">
+    <div className="flex flex-col h-screen overflow-hidden relative">
       <div
-        className="absolute top-0 left-0 right-0 bottom-0 z-[-1] opacity-70"
+        className="absolute inset-0 z-[-1] opacity-70"
         style={{
           backgroundImage: `url(${backgroundImage})`,
           backgroundSize: "cover",
@@ -15,9 +15,15 @@ export default function Layout() {
         }}
       />
       <Header />
-      <div className="flex-1 overflow-y-auto">
-        <Outlet />
+      <div className="flex-1 overflow-y-auto scrollbar-hide mt-20">
+        {" "}
+        {/* Adjust margin-top based on your Header height */}
+        <div className="h-full">
+          <Outlet />
+        </div>
       </div>
     </div>
   );
-}
+};
+
+export default Layout;

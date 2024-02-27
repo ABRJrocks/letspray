@@ -97,7 +97,7 @@ const Chat = () => {
     return `${formattedHours}:${minutes} ${ampm}`;
   };
   return (
-    <div className="flex flex-col h-[90vh] bg-gray-100">
+    <div className="flex flex-col h-screen bg-gray-100">
       <div className="w-full flex flex-col h-full">
         <div className="flex-1 overflow-y-auto p-4 sm:p-8">
           {messages.length > 0 ? (
@@ -134,7 +134,7 @@ const Chat = () => {
           )}
           <div ref={endOfMessages} />
         </div>
-        <div className="p-4 border-t flex items-center bg-white">
+        <div className=" p-4 border-t flex items-center bg-white">
           <textarea
             className="flex-1 p-2 mr-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300 resize-none"
             placeholder="Type your message..."

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useReducer } from "react";
 import { motion } from "framer-motion";
 import { FaSun, FaMoon, FaRegSun, FaCheck } from "react-icons/fa";
 import Toast from "./Toast"; // Import the Toast component
@@ -8,6 +8,7 @@ const NamazPage = () => {
   const [currentTime, setCurrentTime] = useState("");
   const [namazTimes, setNamazTimes] = useState([]);
   const [showToast, setShowToast] = useState(false); // State to control Toast visibility
+  const [, forceUpdate] = React.useReducer((x) => x + 1, 0);
 
   useEffect(() => {
     const fetchNamazTimings = async () => {
@@ -95,7 +96,10 @@ const NamazPage = () => {
     updatedNamazTimes[index].completed = !updatedNamazTimes[index].completed;
     setNamazTimes(updatedNamazTimes);
 
-    const completedNamaz = namazTimes[index].name;
+    // Force re-render
+    forceUpdate();
+
+    const completedNamaz = updatedNamazTimes[index].name;
     setShowToast({
       message: `${completedNamaz} ${
         updatedNamazTimes[index].completed
@@ -126,7 +130,7 @@ const NamazPage = () => {
           opacity: 0.7, // Adjust opacity for overlay
         }}
       />
-      <div className="container mx-auto p-8 bg-white backdrop-blur-md bg-opacity-40 rounded-3xl mt-16 sm:mt-24 overflow-y-auto">
+      <div className="container mx-auto p-8 bg-white backdrop-blur-md bg-opacity-40 rounded-3xl mt-16 sm:mt-24 ">
         {showToast && (
           <Toast
             message={showToast.message}
@@ -140,13 +144,13 @@ const NamazPage = () => {
         <p className="mb-4 text-gray-600 text-center">
           Current Time: {currentTime}
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
           {namazTimes.map((namaz, index) => (
             <motion.div
               key={index}
               className={`relative bg-white rounded-lg shadow-md p-4 cursor-pointer ${
-                namaz.completed ? "bg-green-100" : "hover:bg-blue-100 "
-              }`}
+                namaz.completed ? "bg-green-200" : ""
+              } hover:${namaz.completed ? "" : "bg-blue-100"} `}
               onClick={() => handleNamazComplete(index)}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
